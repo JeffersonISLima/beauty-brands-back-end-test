@@ -40,7 +40,7 @@ http://localhost:3000/api/users
 
 ### Banco de dados:
 
-Há um aquivo de seed para popular o banco, na pasta rais do projeto, execute no terminal:
+Há um aquivo de seed para popular o banco, na pasta raiz do projeto, execute no terminal:
 
   ```sh
 cd bin
