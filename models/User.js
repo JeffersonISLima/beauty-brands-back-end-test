@@ -38,7 +38,6 @@ const userSchema = new Schema({
   },
   value: {
     type: Number,
-    required: true
   },
   items: {
     type: Array,
@@ -58,7 +57,6 @@ const userSchema = new Schema({
   },
   itemsAmount: {
     type: Number,
-    required: true
   },
   freightProrated: Array
 }, {

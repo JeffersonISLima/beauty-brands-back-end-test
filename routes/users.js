@@ -57,7 +57,7 @@ router.put('/user/:id', (req, res, next) => {
     });
 });
 
-/*  Create a new user in the database */
+/* Create a new user in the database */
 router.post('/user/new', (req, res, next) => {
   let {
     cpf,
@@ -82,7 +82,7 @@ router.post('/user/new', (req, res, next) => {
 
   let freightProratedAux = [];
 
-  /* get value freight prorated between products */
+  /* Get value freight prorated between products */
   for (let i = 0; i < itemsValue.length; i++) {
     for (j = 0; j < itemsValue.length; j++) {
       value += parseFloat(itemsValue[j]);
@@ -103,6 +103,12 @@ router.post('/user/new', (req, res, next) => {
     return producFreight.toPrecision(3);
   });
 
+  value = null;
+
+  for (i = 0; i < itemsValue.length; i++) {
+    value += parseFloat(itemsValue[i]);
+  }
+
   User.create({
       cpf,
       name,
@@ -122,6 +128,19 @@ router.post('/user/new', (req, res, next) => {
     })
     .catch((err) => {
       res.json(err);
+    });
+});
+
+/* Delete a user of the database */
+router.delete('/user/:id', (req, res, next) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(response => {
+      res.json({
+        Message: `User ${response.name} deleted successfully`
+      })
+    })
+    .catch(err => {
+      throw new Error(err)
     });
 });
 
